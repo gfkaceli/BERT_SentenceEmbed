@@ -14,6 +14,8 @@ class STSDataset(torch.utils.data.Dataset):
         return self.sentence1[idx], self.sentence2[idx], self.label[idx]
 
 
+
+
 def get_sts_dataset(dataset_name, split=0.3):
     if dataset_name == 'STS-B':
         dataset_name = 'stsbenchmark'
