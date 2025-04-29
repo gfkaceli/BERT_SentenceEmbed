@@ -4,10 +4,10 @@ from torch.optim import AdamW
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from data import STSDataset
-from Utilities import (extract_embeddings,
+from Utilities import (extract_embeddings_sts,
                        calculate_cosine_similarity,
                        calculate_Spearman_rank_correlation_coefficient,
-                       get_model_tokenizer)
+                       get_model_tokenizer_sts)
 from data import get_sts_dataset
 from Loss_Functions_STS.CosineLoss import cosine_similarity_mse_loss, cosine_similarity_mse_norm
 from Loss_Functions_STS.AngleLoss import angle_loss
@@ -47,8 +47,8 @@ def train(model, tokenizer, dataset, batch_size, epochs=10, loss_fn=cosine_simil
             labels = labels.to(device)
 
             # [CLS] token embedding...
-            sentence1_embeddings = extract_embeddings(model, tokenizer, device, sentence1_texts)
-            sentence2_embeddings = extract_embeddings(model, tokenizer, device, sentence2_texts)
+            sentence1_embeddings = extract_embeddings_sts(model, tokenizer, device, sentence1_texts)
+            sentence2_embeddings = extract_embeddings_sts(model, tokenizer, device, sentence2_texts)
 
             # Embedding Loss...
             loss = loss_fn(sentence1_embeddings, sentence2_embeddings, labels)
@@ -74,8 +74,8 @@ def evaluate_sts(model, tokenizer, test_dataset, batch_size):
 
     with torch.no_grad():
         for sentences1, sentences2, labels in tqdm(data_loader, desc="Extracting embeddings", leave=False):
-            embeddings1 = extract_embeddings(model, tokenizer, device, sentences1)
-            embeddings2 = extract_embeddings(model, tokenizer, device, sentences2)
+            embeddings1 = extract_embeddings_sts(model, tokenizer, device, sentences1)
+            embeddings2 = extract_embeddings_sts(model, tokenizer, device, sentences2)
             all_embeddings1.append(embeddings1.cpu())
             all_embeddings2.append(embeddings2.cpu())
             all_labels.append(labels.cpu())
@@ -107,7 +107,7 @@ if __name__=="__main__":
                 train_dataset, test_dataset = get_sts_dataset(dataset)
 
                 # Model Preparation...
-                model, tokenizer = get_model_tokenizer(model_id, device)
+                model, tokenizer = get_model_tokenizer_sts(model_id, device)
 
                 # Training Loop...
                 if loss_name != 'without_ft':

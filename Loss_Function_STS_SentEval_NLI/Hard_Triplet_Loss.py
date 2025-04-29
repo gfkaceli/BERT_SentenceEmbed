@@ -1,0 +1,19 @@
+import torch
+
+def compute_euclidean_distance(a, b):
+    return torch.sqrt(torch.sum((a - b) ** 2, dim=-1) + 1e-16)
+
+def hard_triplet_loss(anchor, positive, negative, margin=1.0):
+    # Computing pairwise distances between embeddings in the batch...
+    pos_distances = compute_euclidean_distance(anchor, positive)
+    neg_distances = compute_euclidean_distance(anchor, negative)
+
+    # Hardest positive: furthest positive sample...
+    hardest_positive_dist = pos_distances.max() # Max distance (hardest positive)...
+    # Hardest negative: closest negative sample...
+    hardest_negative_dist = neg_distances.min() # Min distance (hardest negative)...
+
+    # Triplet loss calculation...
+    triplet_loss = torch.clamp(hardest_positive_dist - hardest_negative_dist + margin, min=0.0)
+    return triplet_loss.mean()
+
