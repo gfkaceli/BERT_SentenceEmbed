@@ -82,3 +82,5 @@ def calculate_cosine_similarity(embeddings_1, embeddings_2):
 def calculate_Spearman_rank_correlation_coefficient(scores, scores_actual):
     sc, _ = spearmanr(scores, scores_actual)
     return sc
+
+

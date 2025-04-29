@@ -13,6 +13,17 @@ class STSDataset(torch.utils.data.Dataset):
     def __getitem__(self, idx):
         return self.sentence1[idx], self.sentence2[idx], self.label[idx]
 
+class SentEvalDataset(torch.utils.data.Dataset):
+    def __init__(self, sentence, label):
+        self.sentence = sentence
+        self.label = label
+
+    def __len__(self):
+        return len(self.label)
+
+    def __getitem__(self, idx):
+        return self.sentence[idx], self.label[idx]
+
 
 def get_sts_dataset(dataset_name, split=0.3):
     if dataset_name == 'STS-B':
