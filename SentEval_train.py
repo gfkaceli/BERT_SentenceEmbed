@@ -2,7 +2,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from torch.optim import AdamW
 from tqdm import tqdm
-
+import torch
 from Loss_Functions_SentEval.CosineSimilarity import cosine_similarity_mse_loss
 from Loss_Functions_SentEval.CoSentLoss import cosent_loss
 from Loss_Functions_SentEval.HardTripletLoss import hard_triplet_loss
@@ -13,7 +13,7 @@ from Loss_Functions_SentEval.InBatchNegative import in_batch_negative_loss
 from Loss_Functions_SentEval.CrossEntropy import cross_entropy_loss
 from Loss_Functions_SentEval.LabelSmoothingCELoss import label_smoothing_cross_entropy_loss
 from Utilities import extract_embeddings_sentEval, prepare_dataset, get_model_tokenizer_sentEval, tokenize_dataset_batch
-import torch
+
 
 
 model_id = "bert-base-uncased"
