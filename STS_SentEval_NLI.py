@@ -12,8 +12,8 @@ from transformers import AutoModel, AutoTokenizer, AutoModelForSequenceClassific
 from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from tqdm import tqdm
-from data import (NLIPairDataset, NLITripletDataset, STSDataset, get_sts_dataset, SentEvalDataset,
-                  get_senteval_dataset, get_nli_dataset)
+from data.data import (NLIPairDataset, NLITripletDataset, STSDataset, get_sts_dataset, SentEvalDataset,
+                       get_senteval_dataset, get_nli_dataset)
 from Utilities import calculate_Spearman_rank_correlation_coefficient, calculate_cosine_similarity
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score

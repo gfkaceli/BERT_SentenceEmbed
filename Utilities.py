@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from data import get_senteval_dataset
+from data.data import get_senteval_dataset
 from transformers import AutoModel, AutoTokenizer, AutoModelForSequenceClassification
 from scipy.stats import spearmanr
 import torch.nn.functional as F

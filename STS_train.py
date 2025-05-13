@@ -3,12 +3,12 @@ import torch
 from torch.optim import AdamW
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from data import STSDataset
+from data.data import STSDataset
 from Utilities import (extract_embeddings_sts,
                        calculate_cosine_similarity,
                        calculate_Spearman_rank_correlation_coefficient,
                        get_model_tokenizer_sts)
-from data import get_sts_dataset
+from data.data import get_sts_dataset
 from Loss_Functions_STS.CosineLoss import cosine_similarity_mse_loss, cosine_similarity_mse_norm
 from Loss_Functions_STS.AngleLoss import angle_loss
 from Loss_Functions_STS.CombinedLoss import cosent_ibn_angle

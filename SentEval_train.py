@@ -15,7 +15,6 @@ from Loss_Functions_SentEval.LabelSmoothingCELoss import label_smoothing_cross_e
 from Utilities import extract_embeddings_sentEval, prepare_dataset, get_model_tokenizer_sentEval, tokenize_dataset_batch
 
 
-
 model_id = "bert-base-uncased"
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 senteval_datasets = ['CR', 'MPQA', 'MR', 'SUBJ']
