@@ -81,7 +81,7 @@ def train(model, tokenizer, dataset, batch_size, loss_type='clf', epochs=10, los
                 # Forward pass...
                 outputs = model(**inputs)
                 logits = outputs.logits
-                loss = loss_name(logits, labels, **loss_kwargs)
+                loss = loss_name(logits, labels)
 
                 # Backpropagation...
                 loss.backward()
@@ -100,7 +100,7 @@ def train(model, tokenizer, dataset, batch_size, loss_type='clf', epochs=10, los
                 hypothesis_embeddings = extract_embeddings(model, tokenizer, device, hypothesis_texts)
 
                 # Embedding Loss...
-                loss = loss_name(premise_embeddings, hypothesis_embeddings, labels, **loss_kwargs)
+                loss = loss_name(premise_embeddings, hypothesis_embeddings, labels)
                 if loss == 0.0:
                     continue
 
@@ -120,7 +120,7 @@ def train(model, tokenizer, dataset, batch_size, loss_type='clf', epochs=10, los
                 negative_embeddings = extract_embeddings(model, tokenizer, device, negative_texts)
 
                 # Embedding Loss...
-                loss = loss_name(anchor_embeddings, positive_embeddings, negative_embeddings, **loss_kwargs)
+                loss = loss_name(anchor_embeddings, positive_embeddings, negative_embeddings)
                 if loss == 0.0:
                     continue
 
@@ -226,3 +226,4 @@ if __name__ == '__main__':
             senteval_results = evaluate_senteval(model, tokenizer, loss_name, batch_size)
         senteval_results_list.append(senteval_results)
         sts_results_list.append(sts_results)
+        print("Training done......")
