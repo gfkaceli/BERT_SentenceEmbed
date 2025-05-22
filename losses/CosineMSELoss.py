@@ -1,5 +1,5 @@
 import torch.nn.functional as F
-from losses.normalization import norm_function
+from normalization import norm_function
 from GeneratePairs import generate_pairs
 
 
