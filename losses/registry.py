@@ -3,17 +3,19 @@ from dataclasses import dataclass
 from typing import Callable, Any, Dict
 
 # --- Core loss implementations ---
-from .CrossEntropy import cross_entropy_loss
-from .LabelSmoothingCELoss import label_smoothing_cross_entropy_loss
-from .CosineMSELoss import cosine_similarity_mse_loss
-from .CoSentLoss import cosent_loss
-from .InBatchNegatives import in_batch_negative_loss
-from .AngleLoss import angle_loss
-from .CombinedLoss import cosent_ibn_angle
+from losses.CrossEntropy import cross_entropy_loss
+from losses.LabelSmoothingCELoss import label_smoothing_cross_entropy_loss
+from losses.CosineMSELoss import cosine_similarity_mse_loss
+from losses.CoSentLoss import cosent_loss
+from losses.InBatchNegatives import in_batch_negative_loss
+from losses.AngleLoss import angle_loss
+from losses.CombinedLoss import cosent_ibn_angle
+from losses.TripletLoss import triplet_loss
+from losses.HardTripletLoss import hard_triplet_loss
 
 
 # --- Pair‐generation helper ---
-from .GeneratePairs import generate_pairs
+from losses.GeneratePairs import generate_pairs
 
 @dataclass
 class LossSpec:
@@ -37,8 +39,8 @@ BASE_LOSS_REGISTRY: Dict[str, LossSpec] = {
     "angle":            LossSpec(fn=angle_loss,               type="pair"),
     "cosent_ibn_angle": LossSpec(fn=cosent_ibn_angle,            type="pair"),
     # triplet losses
-    #"triplet":          LossSpec(fn=triplet_loss,             type="triplet"),
-    #"hard_triplet":     LossSpec(fn=hard_triplet_loss,        type="triplet"),
+    "triplet":          LossSpec(fn=triplet_loss,             type="triplet"),
+    "hard_triplet":     LossSpec(fn=hard_triplet_loss,        type="triplet"),
 }
 
 def _wrap_with_pair_generation(core_fn: Callable[..., Any]) -> Callable[..., Any]:
