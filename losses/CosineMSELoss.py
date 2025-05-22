@@ -1,6 +1,6 @@
 import torch.nn.functional as F
-from normalization import norm_function
-from GeneratePairs import generate_pairs
+from .normalization import norm_function
+from .GeneratePairs import generate_pairs
 
 
 def cosine_similarity_mse_loss(embedding1, labels, embedding2=None, pair_generate=True):
