@@ -1,6 +1,6 @@
-from losses.CoSentLoss import cosent_loss
-from losses.InBatchNegatives import in_batch_negative_loss
-from losses.AngleLoss import angle_loss
+from .CoSentLoss import cosent_loss
+from .InBatchNegatives import in_batch_negative_loss
+from .AngleLoss import angle_loss
 
 
 def cosent_ibn_angle(embedding1, labels, embedding2=None, w_cosent=1, w_ibn=1, w_angle=1,

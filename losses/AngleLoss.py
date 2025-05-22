@@ -1,5 +1,5 @@
 import torch
-from losses.GeneratePairs import generate_pairs
+from .GeneratePairs import generate_pairs
 
 def angle_loss(embedding1, labels, embedding2=None, tau=1.0, pair_generate=True):
     if pair_generate:

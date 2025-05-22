@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-from GeneratePairs import generate_pairs
+from .GeneratePairs import generate_pairs
 
 
 def cosent_loss(embedding1,  labels, embedding2=None,

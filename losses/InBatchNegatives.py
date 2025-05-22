@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 
-from losses.GeneratePairs import generate_pairs
+from .GeneratePairs import generate_pairs
 
 
 def categorical_crossentropy(y_true, y_pred):
