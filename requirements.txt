@@ -1,0 +1,7 @@
+torch==2.6.0
+datasets==3.4.1
+numpy==2.2.4
+tqdm==4.67.1
+transformers==4.50.0
+scipy==1.15.2
+scikit-learn==1.6.1
