@@ -50,7 +50,7 @@ def _wrap_with_pair_generation(core_fn: Callable[..., Any]) -> Callable[..., Any
     """
     def wrapped(embeddings, labels, **kwargs):
         e1, e2, pair_labels = generate_pairs(embeddings, labels)
-        return core_fn(e1, e2, pair_labels, **kwargs)
+        return core_fn(e1,pair_labels, e2, pair_generate=False)
     return wrapped
 
 def get_loss_spec(loss_name: str, experiment: str) -> LossSpec:

@@ -2,7 +2,7 @@
 
 from typing import List, Tuple, Optional
 from torch.utils.data import DataLoader, ConcatDataset
-from data import (
+from data.data import (
     get_sts_dataset,
     get_senteval_dataset,
     get_nli_dataset,
