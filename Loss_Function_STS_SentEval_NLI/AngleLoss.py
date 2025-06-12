@@ -1,6 +1,5 @@
 import torch
 
-
 def angle_loss(embedding1, embedding2, labels, tau=1.0):
     # Input preparation...
     labels = (labels[:, None] < labels[None, :]).float()

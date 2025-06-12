@@ -4,3 +4,5 @@
 SentEval_train.py
 STS_SentEval_NLI.py
 STS_train.py
+.idea
+__pycache__
