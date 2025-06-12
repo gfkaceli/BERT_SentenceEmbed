@@ -2,5 +2,5 @@
 /Loss_Functions_SentEval
 /Loss_Functions_STS
 SentEval_train.py
-STS_train.py
 STS_SentEval_NLI.py
+STS_train.py
